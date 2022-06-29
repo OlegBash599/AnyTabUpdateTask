@@ -1,12 +1,10 @@
 # AnyTabUpdateTask
 <h1>Utility for DataBase Changes in Update Task</h1>
 
-<p>Utility is for avoiding creation additional function modules and table types. 
-<BR>
-  for stable and fast code-writing.
+<p>Utility is for avoiding creation additional function modules and table types for stable and fast code-writing.
 </p>
-Main functionality is in package <strong>ZC8A_005</strong>.<BR>
-Demo-report is in addtional package <strong> [ZC8A_005_DEMO](https://github.com/OlegBash599/AnyTabUpdateTask/tree/main/DEMO_package) </strong> which is attached in separate [ZIPfile](https://github.com/OlegBash599/AnyTabUpdateTask/tree/main/DEMO_package) to this repository.
+Main functionality is in package <strong>ZC8A_005</strong>.</BR>
+Demo-report is in addtional package <strong> [ZC8A_005_DEMO] </strong> which is attached in separate [ZIPfile](https://github.com/OlegBash599/AnyTabUpdateTask/tree/main/DEMO_package) to this repository.
   
  ____
 

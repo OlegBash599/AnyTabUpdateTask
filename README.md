@@ -9,3 +9,6 @@
 Main functionality is in package <strong>ZC8A_005</strong>.
 Demo-report is in addtional package <strong>ZC8A_005_DEMO</strong>.
 
+<div style="background-color:#8ebf42">
+  test
+</div>

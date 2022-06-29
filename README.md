@@ -11,7 +11,7 @@ Demo-report is in addtional package <strong>ZC8A_005_DEMO</strong>.
  ____
 
 Simple Example for MODIFY table using this utility:
-```
+```ABAP
     DATA lc_db_tab_sample TYPE tabname VALUE 'ZTC8A005_SAMPLE'.
     DATA lt_sample_tab TYPE STANDARD TABLE OF ztc8a005_sample.
 

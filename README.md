@@ -28,7 +28,7 @@ Simple Example for MODIFY table using this utility:
 Without this utlity it could be like that (with creation of additional objects)
 <details>  
 <base target="_blank">
-<summary>Show update by function (old-fashioned way)</summary>
+<summary>Show update by function (without the utility AnyTabUpdateTask)</summary>
 
 ```ABAP    
     DATA lt_sample_tab TYPE STANDARD TABLE OF ztc8a005_sample.

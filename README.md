@@ -28,7 +28,7 @@ Simple Example for MODIFY table using this utility:
 Without this utlity it could be like that (with creation of additional objects)
 <details>  
 <base target="_blank">
-<summary>Show update by function (old-fashined way)</summary>
+<summary>Show update by function (old-fashioned way)</summary>
 
 ```ABAP    
     DATA lt_sample_tab TYPE STANDARD TABLE OF ztc8a005_sample.
@@ -58,7 +58,7 @@ Example for several tables
 <summary>Utility AnyTabUpdateTask for several Tables</summary>
 
 ```ABAP    
-  DATA lc_db_tab_sample TYPE tabname VALUE 'ZTC8A005_SAMPLE'.
+    DATA lc_db_tab_sample TYPE tabname VALUE 'ZTC8A005_SAMPLE'.
     DATA lt_sample_tab TYPE STANDARD TABLE OF ztc8a005_sample.
     DATA lt_sample_empty_tab TYPE STANDARD TABLE OF ztc8a005_sample.
     DATA lt_head_tab TYPE STANDARD TABLE OF ztc8a005_head.
@@ -115,13 +115,15 @@ Example for several tables
                                         it_tab_content = lt_sample_empty_tab ).
 
 
-    " обновление всех таблиц будет одномоментно после commit
-    " а по пустой таблицы ничего происходить не будет (не будет поставлен Update Task)
+    " #RU:обновление всех таблиц будет одномоментно после commit
+    " #EN:database changes are to be after commit-command
+    " #RU:а по пустой таблицы ничего происходить не будет (не будет поставлен Update Task)
+    " #EN: empty table does not take into account while commit command
     lo_saver_anytab->do_commit_if_any( ).
   
 ```
 </details>
  
- 
  ____
+
 

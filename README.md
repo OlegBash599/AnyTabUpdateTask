@@ -25,3 +25,25 @@ Simple Example for MODIFY table using this utility:
       )->save2db( iv_tabname = lc_db_tab_sample
                   it_tab_content = lt_sample_tab )->do_commit_if_any( ).
 ```
+
+Without this utlity it could be like that (with creation of additional objects)
+```
+    
+    DATA lt_sample_tab TYPE STANDARD TABLE OF ztc8a005_sample.
+
+    lt_sample_tab = VALUE #(
+        ( entity_guid = 'ANY_SIMPL_GUID_MOD' entity_param1 = 'CHAR10' entity_param2 = '0504030201' )
+        ( entity_guid = 'ANY_SIMPL_GUID2_MOD' entity_param1 = '2CHAR10' entity_param2 = '0102030405'  )
+        ( entity_guid = 'ANY_SIMPL_GUID2_DEL' entity_param1 = '2CHAR10' entity_param2 = '777909034' )
+        ).
+
+    CALL FUNCTION 'Z_C8A_005_DEMO_UPD_SAMPLE'
+      IN UPDATE TASK
+      EXPORTING
+        it_sample = lt_sample_tab.
+  
+        CALL FUNCTION 'BAPI_TRANSACTION_COMMIT'
+        EXPORTING
+          wait = abap_true.
+  
+```

@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function for Any Tab Update</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_C8A005_UPDD01</SOBJ_NAME>
+    <SOBJ_NAME>LZFG_C8A005_UPDP01</SOBJ_NAME>
+    <SOBJ_NAME>LZFG_C8A005_UPDTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_C8A005_UPD</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>Z_C8A005_DEST_BYJSON</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Update By tab TABNAME in Destination NONE</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_TABNAME</PARAMETER>
+       <TYP>TABNAME</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_JSON_STR</PARAMETER>
+       <TYP>STRING</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_KZ</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>UPDKZ_D</TYP>
+      </RSIMP>
+     </IMPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_TABNAME</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Имя таблицы</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_JSON_STR</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_KZ</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Таблица для индикаторов обновления</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>Z_C8A005_UPD_ANYTAB</FUNCNAME>
+     <SHORT_TEXT>Update By tab TABNAME</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_TABNAME</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>TABNAME</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IT_TAB_DATA</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ANY</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_DO_COMMIT</PARAMETER>
+       <DEFAULT>ABAP_FALSE</DEFAULT>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>CHAR1</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_KZ</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>UPDKZ_D</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_DEST_NONE</PARAMETER>
+       <DEFAULT>ABAP_FALSE</DEFAULT>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>CHAR1</TYP>
+      </RSIMP>
+     </IMPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_TABNAME</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Имя таблицы</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_TAB_DATA</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_DO_COMMIT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Индикатор из одной позиции</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_KZ</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Таблица для индикаторов обновления</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_DEST_NONE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Destination NONE call</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>Z_C8A005_UPD_BYJSON</FUNCNAME>
+     <UPDATE_TASK>1</UPDATE_TASK>
+     <SHORT_TEXT>Update By tab TABNAME</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_TABNAME</PARAMETER>
+       <TYP>TABNAME</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_JSON_STR</PARAMETER>
+       <TYP>STRING</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_KZ</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>UPDKZ_D</TYP>
+      </RSIMP>
+     </IMPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_TABNAME</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Имя таблицы</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_JSON_STR</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_KZ</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Таблица для индикаторов обновления</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

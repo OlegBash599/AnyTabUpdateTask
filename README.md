@@ -127,4 +127,4 @@ Example for several tables
  ____
 
 
-Additional examples and descriptions are on https://www.olegbash.ru
+Additional examples and descriptions are on https://olegbash.ru/anytabupdatetask

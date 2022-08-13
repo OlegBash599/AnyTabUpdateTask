@@ -7,6 +7,7 @@ FUNCTION z_c8a005_upd_anytab.
 *"     REFERENCE(IV_DO_COMMIT) TYPE  CHAR1 DEFAULT ABAP_FALSE
 *"     REFERENCE(IV_KZ) TYPE  UPDKZ_D OPTIONAL
 *"     REFERENCE(IV_DEST_NONE) TYPE  CHAR1 DEFAULT ABAP_FALSE
+*"     REFERENCE(IV_EMPTY_FIELDS) TYPE  STRING OPTIONAL
 *"----------------------------------------------------------------------
 
   "  DATA lo_tab_json TYPE REF TO lcl_tab_json.
@@ -23,12 +24,14 @@ FUNCTION z_c8a005_upd_anytab.
     WHEN iv_dest_none.
       lo_tab_json->put_json2dest_none( EXPORTING  iv_tabname  = iv_tabname
                                                   iv_json_str = lv_json_str
-                                                  iv_kz = iv_kz ).
+                                                  iv_kz = iv_kz
+                                                  iv_empty_fields = iv_empty_fields ).
 
     WHEN OTHERS.
       lo_tab_json->put_json2update( EXPORTING iv_tabname  = iv_tabname
                                               iv_json_str = lv_json_str
-                                              iv_kz = iv_kz ).
+                                              iv_kz = iv_kz
+                                              iv_empty_fields = iv_empty_fields ).
 
       IF iv_do_commit EQ abap_true.
         lo_tab_json->do_commit( ).

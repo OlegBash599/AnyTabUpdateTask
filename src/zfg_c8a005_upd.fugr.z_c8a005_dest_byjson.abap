@@ -5,6 +5,7 @@ FUNCTION z_c8a005_dest_byjson.
 *"     VALUE(IV_TABNAME) TYPE  TABNAME
 *"     VALUE(IV_JSON_STR) TYPE  STRING
 *"     VALUE(IV_KZ) TYPE  UPDKZ_D OPTIONAL
+*"     VALUE(IV_EMPTY_FIELDS) TYPE  STRING OPTIONAL
 *"----------------------------------------------------------------------
 
 
@@ -13,9 +14,10 @@ FUNCTION z_c8a005_dest_byjson.
   CALL FUNCTION 'Z_C8A005_UPD_BYJSON'
     IN UPDATE TASK
     EXPORTING
-      iv_tabname  = iv_tabname                 " Имя таблицы
-      iv_json_str = iv_json_str
-      iv_kz       = iv_kz.                  " Таблица для индикаторов обновления
+      iv_tabname      = iv_tabname                 " Имя таблицы
+      iv_json_str     = iv_json_str
+      iv_kz           = iv_kz                  " Таблица для индикаторов обновления
+      iv_empty_fields = iv_empty_fields.
 
 
   CREATE OBJECT lo_tab_json.

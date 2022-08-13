@@ -1,4 +1,4 @@
-CLASS zcl_C8A005_save2db DEFINITION
+CLASS zcl_c8a005_save2db DEFINITION
   PUBLIC
   CREATE PUBLIC .
 
@@ -7,27 +7,28 @@ CLASS zcl_C8A005_save2db DEFINITION
     METHODS constructor .
     METHODS save2db
       IMPORTING
-                !iv_tabname     TYPE tabname
-                !it_tab_content TYPE any
-                !iv_do_commit   TYPE char1 DEFAULT abap_false
-                !iv_kz          TYPE updkz_d OPTIONAL
-                !iv_dest_none   TYPE abap_bool DEFAULT abap_false
-      RETURNING VALUE(ro_obj)   TYPE REF TO zcl_c8a005_save2db.
-
+        !iv_tabname      TYPE tabname
+        !it_tab_content  TYPE any
+        !iv_do_commit    TYPE char1 DEFAULT abap_false
+        !iv_kz           TYPE updkz_d OPTIONAL
+        !iv_dest_none    TYPE abap_bool DEFAULT abap_false
+        !iv_empty_fields TYPE string OPTIONAL
+      RETURNING
+        VALUE(ro_obj)    TYPE REF TO zcl_c8a005_save2db .
     METHODS save2db_line
       IMPORTING
-                !iv_tabname     TYPE tabname
-                !is_tab_content TYPE any
-                !iv_do_commit   TYPE char1 DEFAULT abap_false
-                !iv_dest_none   TYPE abap_bool DEFAULT abap_false
-      RETURNING VALUE(ro_obj)   TYPE REF TO zcl_c8a005_save2db.
-
+        !iv_tabname     TYPE tabname
+        !is_tab_content TYPE any
+        !iv_do_commit   TYPE char1 DEFAULT abap_false
+        !iv_dest_none   TYPE abap_bool DEFAULT abap_false
+      RETURNING
+        VALUE(ro_obj)   TYPE REF TO zcl_c8a005_save2db .
     METHODS do_commit_if_any
-      IMPORTING iv_do_commit TYPE abap_bool DEFAULT abap_false.
-
+      IMPORTING
+        !iv_do_commit TYPE abap_bool DEFAULT abap_false .
     METHODS do_rollback
-      IMPORTING iv_do_rollback TYPE abap_bool DEFAULT abap_false.
-
+      IMPORTING
+        !iv_do_rollback TYPE abap_bool DEFAULT abap_false .
   PROTECTED SECTION.
   PRIVATE SECTION.
 
@@ -38,9 +39,46 @@ ENDCLASS.
 
 
 CLASS zcl_c8a005_save2db IMPLEMENTATION.
+
+
   METHOD constructor.
 
   ENDMETHOD.                    "CONSTRUCTOR
+
+
+  METHOD do_commit_if_any.
+    IF mv_data_was_sent2db EQ abap_false
+    AND iv_do_commit EQ abap_false.
+      RETURN.
+    ENDIF.
+
+    CALL FUNCTION 'BAPI_TRANSACTION_COMMIT'
+      EXPORTING
+        wait = abap_true
+*      IMPORTING
+*       return =
+      .
+
+    CLEAR mv_data_was_sent2db.
+  ENDMETHOD.
+
+
+  METHOD do_rollback.
+    IF mv_data_was_sent2db EQ abap_false
+    AND iv_do_rollback EQ abap_false.
+      RETURN.
+    ENDIF.
+
+    CALL FUNCTION 'BAPI_TRANSACTION_ROLLBACK'
+      EXPORTING
+        wait = abap_true
+*      IMPORTING
+*       return =
+      .
+
+    CLEAR mv_data_was_sent2db.
+
+  ENDMETHOD.
 
 
   METHOD save2db.
@@ -67,11 +105,12 @@ CLASS zcl_c8a005_save2db IMPLEMENTATION.
 
     CALL FUNCTION 'Z_C8A005_UPD_ANYTAB'
       EXPORTING
-        iv_tabname   = lv_tabname                " Имя таблицы
-        it_tab_data  = it_tab_content
-        iv_do_commit = iv_do_commit
-        iv_kz        = iv_kz
-        iv_dest_none = iv_dest_none.
+        iv_tabname      = lv_tabname                " Имя таблицы
+        it_tab_data     = it_tab_content
+        iv_do_commit    = iv_do_commit
+        iv_kz           = iv_kz
+        iv_dest_none    = iv_dest_none
+        iv_empty_fields = iv_empty_fields.
 
     IF iv_dest_none EQ abap_false.
       mv_data_was_sent2db = abap_true.
@@ -111,38 +150,4 @@ CLASS zcl_c8a005_save2db IMPLEMENTATION.
     ENDIF.
 
   ENDMETHOD.                    "save2db_line
-
-  METHOD do_commit_if_any.
-    IF mv_data_was_sent2db EQ abap_false
-    AND iv_do_commit EQ abap_false.
-      RETURN.
-    ENDIF.
-
-    CALL FUNCTION 'BAPI_TRANSACTION_COMMIT'
-      EXPORTING
-        wait = abap_true
-*      IMPORTING
-*       return =
-      .
-
-    CLEAR mv_data_was_sent2db.
-  ENDMETHOD.
-
-  METHOD do_rollback.
-    IF mv_data_was_sent2db EQ abap_false
-    AND iv_do_rollback EQ abap_false.
-      RETURN.
-    ENDIF.
-
-    CALL FUNCTION 'BAPI_TRANSACTION_ROLLBACK'
-      EXPORTING
-        wait = abap_true
-*      IMPORTING
-*       return =
-      .
-
-    CLEAR mv_data_was_sent2db.
-
-  ENDMETHOD.
-
 ENDCLASS.

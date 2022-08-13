@@ -13,20 +13,23 @@ CLASS zcl_c8a005_tab_json DEFINITION
         !ev_json_str TYPE string .
     METHODS put_json2update
       IMPORTING
-        !iv_tabname  TYPE tabname
-        !iv_json_str TYPE string
-        !iv_kz       TYPE updkz_d OPTIONAL .
+        !iv_tabname      TYPE tabname
+        !iv_json_str     TYPE string
+        !iv_kz           TYPE updkz_d OPTIONAL
+        !iv_empty_fields TYPE string OPTIONAL .
     METHODS do_commit .
     METHODS get_from_json2tab
       IMPORTING
-        !iv_tabname  TYPE tabname
-        !iv_json_str TYPE string
-        !iv_kz       TYPE updkz_d OPTIONAL .
+        !iv_tabname      TYPE tabname
+        !iv_json_str     TYPE string
+        !iv_kz           TYPE updkz_d OPTIONAL
+        !iv_empty_fields TYPE string OPTIONAL.
     METHODS put_json2dest_none
       IMPORTING
-        !iv_tabname  TYPE tabname
-        !iv_json_str TYPE string
-        !iv_kz       TYPE updkz_d OPTIONAL .
+        !iv_tabname      TYPE tabname
+        !iv_json_str     TYPE string
+        !iv_kz           TYPE updkz_d OPTIONAL
+        !iv_empty_fields TYPE string OPTIONAL .
   PROTECTED SECTION.
 
   PRIVATE SECTION.
@@ -51,12 +54,14 @@ CLASS zcl_c8a005_tab_json DEFINITION
         !eo_tab_type  TYPE REF TO cl_abap_tabledescr.
 
     METHODS prepare_upd_lines
-      IMPORTING !iv_tabname TYPE tabname
-                !it_dyn_tab TYPE STANDARD TABLE.
+      IMPORTING !iv_tabname      TYPE tabname
+                !it_dyn_tab      TYPE STANDARD TABLE
+                !iv_empty_fields TYPE string OPTIONAL.
 
     METHODS prep_upd_lines_key_non_empty
-      IMPORTING !iv_tabname TYPE tabname
-                !it_dyn_tab TYPE STANDARD TABLE.
+      IMPORTING !iv_tabname      TYPE tabname
+                !it_dyn_tab      TYPE STANDARD TABLE
+                !iv_empty_fields TYPE string OPTIONAL.
 
 ENDCLASS.
 
@@ -123,8 +128,11 @@ CLASS zcl_c8a005_tab_json IMPLEMENTATION.
 
 
   METHOD get_from_json2tab.
-*      IMPORTING iv_tabname  TYPE tabname
-*                iv_json_str TYPE string.
+*      IMPORTING
+*        !iv_tabname      TYPE tabname
+*        !iv_json_str     TYPE string
+*        !iv_kz           TYPE updkz_d OPTIONAL
+*        !iv_empty_fields TYPE string OPTIONAL.
 
     DATA lv_json_str TYPE string.
     DATA lr_db_content     TYPE REF TO data.
@@ -172,7 +180,8 @@ CLASS zcl_c8a005_tab_json IMPLEMENTATION.
 
           WHEN 'U'.
             prepare_upd_lines( iv_tabname = iv_tabname
-                               it_dyn_tab = <fs_dyn_tab> ).
+                               it_dyn_tab = <fs_dyn_tab>
+                               iv_empty_fields = iv_empty_fields ).
 
           WHEN OTHERS.
             MODIFY (iv_tabname) FROM TABLE <fs_dyn_tab>.
@@ -187,13 +196,15 @@ CLASS zcl_c8a005_tab_json IMPLEMENTATION.
   ENDMETHOD.                    "get_from_json2tab
 
   METHOD prepare_upd_lines.
-*      IMPORTING !iv_tabname TYPE tabname
-*                !it_dyn_tab TYPE STANDARD TABLE.
+*      IMPORTING !iv_tabname      TYPE tabname
+*                !it_dyn_tab      TYPE STANDARD TABLE
+*                !iv_empty_fields TYPE string OPTIONAL.
 
     prep_upd_lines_key_non_empty(
       EXPORTING
         iv_tabname = iv_tabname
         it_dyn_tab = it_dyn_tab
+        iv_empty_fields = iv_empty_fields
     ).
 
   ENDMETHOD.
@@ -218,9 +229,22 @@ CLASS zcl_c8a005_tab_json IMPLEMENTATION.
     DATA lt_upd_where TYPE STANDARD TABLE OF string.
     DATA lv_do_skip_line TYPE abap_bool.
 
+    DATA lv_empty_fields2update TYPE string.
+    DATA lt_list_of_empty_fields TYPE STANDARD TABLE OF string.
+
+
     FIELD-SYMBOLS <fs_target_tab_line> TYPE any.
     FIELD-SYMBOLS <fs_dd03l_loc> TYPE ts_dd03l_loc.
     FIELD-SYMBOLS <fs_f> TYPE any.
+
+    lv_empty_fields2update = iv_empty_fields.
+    TRANSLATE lv_empty_fields2update TO UPPER CASE.
+    REPLACE ALL OCCURRENCES OF ` ` IN lv_empty_fields2update WITH `` .
+    SPLIT lv_empty_fields2update AT ';' INTO TABLE lt_list_of_empty_fields.
+    DELETE lt_list_of_empty_fields WHERE table_line IS INITIAL.
+    SORT lt_list_of_empty_fields.
+    DELETE ADJACENT DUPLICATES FROM lt_list_of_empty_fields.
+
 
     SELECT tabname fieldname as4local as4vers position keyflag
         comptype
@@ -240,7 +264,7 @@ CLASS zcl_c8a005_tab_json IMPLEMENTATION.
       " ключ - для where
       CLEAR lt_upd_where.
       LOOP AT lt_dd03l_loc ASSIGNING <fs_dd03l_loc> WHERE keyflag = abap_true
-        and comptype eq 'E'.
+        AND comptype EQ 'E'.
         IF <fs_dd03l_loc>-fieldname EQ 'MANDT'
             OR <fs_dd03l_loc>-fieldname EQ 'CLIENT'.
           CONTINUE.
@@ -249,7 +273,7 @@ CLASS zcl_c8a005_tab_json IMPLEMENTATION.
         ASSIGN COMPONENT <fs_dd03l_loc>-fieldname OF STRUCTURE <fs_target_tab_line> TO <fs_f>.
         IF sy-subrc EQ 0.
 
-          if <fs_f> is INITIAL.
+          IF <fs_f> IS INITIAL.
             CONTINUE.
           ENDIF.
 
@@ -277,14 +301,20 @@ CLASS zcl_c8a005_tab_json IMPLEMENTATION.
       """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
       """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
       """"""""""""""
-      " Значения целевых полей - which is not initial
+      " Значения целевых полей - which is not initial (if not in array empty_fields)
       CLEAR lt_upd_set.
       LOOP AT lt_dd03l_loc ASSIGNING <fs_dd03l_loc> WHERE keyflag = abap_false
-        and comptype eq 'E'.
+        AND comptype EQ 'E'.
         ASSIGN COMPONENT <fs_dd03l_loc>-fieldname OF STRUCTURE <fs_target_tab_line> TO <fs_f>.
         IF sy-subrc EQ 0.
           IF <fs_f> IS INITIAL.
-            CONTINUE.
+            "CONTINUE.
+            READ TABLE lt_list_of_empty_fields TRANSPORTING NO FIELDS WITH KEY
+                table_line = <fs_dd03l_loc>-fieldname BINARY SEARCH.
+            IF sy-subrc EQ 0.
+            ELSE.
+              CONTINUE.
+            ENDIF.
           ENDIF.
 
           CLEAR lv_upd_set_line.
@@ -404,9 +434,10 @@ CLASS zcl_c8a005_tab_json IMPLEMENTATION.
     CALL FUNCTION 'Z_C8A005_DEST_BYJSON'
       DESTINATION 'NONE'
       EXPORTING
-        iv_tabname  = iv_tabname                 " Имя таблицы
-        iv_json_str = iv_json_str
-        iv_kz       = iv_kz.
+        iv_tabname      = iv_tabname                 " Имя таблицы
+        iv_json_str     = iv_json_str
+        iv_kz           = iv_kz
+        iv_empty_fields = iv_empty_fields.
 
 
   ENDMETHOD.                    "put_json2update
@@ -420,9 +451,10 @@ CLASS zcl_c8a005_tab_json IMPLEMENTATION.
     CALL FUNCTION 'Z_C8A005_UPD_BYJSON'
       IN UPDATE TASK
       EXPORTING
-        iv_tabname  = iv_tabname                 " Имя таблицы
-        iv_json_str = iv_json_str
-        iv_kz       = iv_kz.
+        iv_tabname      = iv_tabname                 " Имя таблицы
+        iv_json_str     = iv_json_str
+        iv_kz           = iv_kz
+        iv_empty_fields = iv_empty_fields.
 
 
   ENDMETHOD.                    "put_json2update

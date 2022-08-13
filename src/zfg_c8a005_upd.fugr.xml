@@ -28,6 +28,11 @@
        <OPTIONAL>X</OPTIONAL>
        <TYP>UPDKZ_D</TYP>
       </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_EMPTY_FIELDS</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>STRING</TYP>
+      </RSIMP>
      </IMPORT>
      <DOCUMENTATION>
       <RSFDO>
@@ -43,6 +48,10 @@
        <PARAMETER>IV_KZ</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Таблица для индикаторов обновления</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_EMPTY_FIELDS</PARAMETER>
+       <KIND>P</KIND>
       </RSFDO>
      </DOCUMENTATION>
     </item>
@@ -80,6 +89,12 @@
        <REFERENCE>X</REFERENCE>
        <TYP>CHAR1</TYP>
       </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_EMPTY_FIELDS</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>STRING</TYP>
+      </RSIMP>
      </IMPORT>
      <DOCUMENTATION>
       <RSFDO>
@@ -106,6 +121,10 @@
        <KIND>P</KIND>
        <STEXT>Destination NONE call</STEXT>
       </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_EMPTY_FIELDS</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
      </DOCUMENTATION>
     </item>
     <item>
@@ -126,6 +145,11 @@
        <OPTIONAL>X</OPTIONAL>
        <TYP>UPDKZ_D</TYP>
       </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_EMPTY_FIELDS</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>STRING</TYP>
+      </RSIMP>
      </IMPORT>
      <DOCUMENTATION>
       <RSFDO>
@@ -141,6 +165,10 @@
        <PARAMETER>IV_KZ</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Таблица для индикаторов обновления</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_EMPTY_FIELDS</PARAMETER>
+       <KIND>P</KIND>
       </RSFDO>
      </DOCUMENTATION>
     </item>

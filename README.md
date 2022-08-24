@@ -4,7 +4,7 @@
 <p>Utility is for avoiding creation additional function modules and table types for stable and fast code-writing.
 
 Main functionality is in package <strong>ZC8A_005</strong>.</BR>
-Demo-report is in addtional sub-package <strong> [ZC8A_005_DEMO](https://github.com/OlegBash599/AnyTabUpdateTask/tree/main/src/zc8a_005_demo) </strong> which is attached in separate [ZIP-file](https://github.com/OlegBash599/AnyTabUpdateTask/tree/main/src/zc8a_005_demo) to this repository.
+Demo-report is in addtional sub-package <strong> [ZC8A_005_DEMO](https://github.com/OlegBash599/AnyTabUpdateTask/tree/main/src/zc8a_005_demo) </strong> which is in separate folder(https://github.com/OlegBash599/AnyTabUpdateTask/tree/main/src/zc8a_005_demo) in this repository.
 </p>
 
  ____

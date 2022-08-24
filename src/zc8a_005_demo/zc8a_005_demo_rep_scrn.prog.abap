@@ -1,0 +1,37 @@
+*&---------------------------------------------------------------------*
+*& Include          ZC8A_005_DEMO_REP_SCRN
+*&---------------------------------------------------------------------*
+
+SELECTION-SCREEN BEGIN OF BLOCK b01 WITH FRAME TITLE TEXT-b01.
+
+  PARAMETERS:   do_break AS CHECKBOX DEFAULT 'X'
+              , funcway AS CHECKBOX DEFAULT ' '
+              , anytab AS CHECKBOX DEFAULT 'X'
+              .
+
+SELECTION-SCREEN END OF BLOCK b01.
+
+
+SELECTION-SCREEN BEGIN OF BLOCK b02 WITH FRAME TITLE TEXT-b02.
+
+
+  SELECTION-SCREEN BEGIN OF LINE.
+    PARAMETERS:   modify AS CHECKBOX DEFAULT 'X'.
+    SELECTION-SCREEN COMMENT 2(10) TEXT-f21 FOR FIELD modify.
+
+    PARAMETERS:   upd_v1 AS CHECKBOX DEFAULT 'X'.
+    SELECTION-SCREEN COMMENT 14(24) TEXT-f22 FOR FIELD upd_v1.
+
+    PARAMETERS:   upd_v2 AS CHECKBOX DEFAULT 'X'.
+    SELECTION-SCREEN COMMENT 40(20) TEXT-f24 FOR FIELD upd_v2.
+
+    PARAMETERS:   del_key AS CHECKBOX DEFAULT 'X'.
+    SELECTION-SCREEN COMMENT 64(20) TEXT-f23 FOR FIELD del_key.
+
+
+  SELECTION-SCREEN END OF LINE.
+
+  PARAMETERS: bckg AS CHECKBOX DEFAULT ''
+              .
+
+SELECTION-SCREEN END OF BLOCK b02.

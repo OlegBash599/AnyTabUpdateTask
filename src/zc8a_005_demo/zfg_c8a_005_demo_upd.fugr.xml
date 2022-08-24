@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Function Group for Update Task</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_C8A_005_DEMO_UPDTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_C8A_005_DEMO_UPD</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>Z_C8A_005_DEMO_UPD_HEAD_ITEM</FUNCNAME>
+     <UPDATE_TASK>1</UPDATE_TASK>
+     <SHORT_TEXT>Update Task for Table ZTC8A005_SAMPLE</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_UPDKZ</PARAMETER>
+       <DEFAULT>&apos;M&apos;</DEFAULT>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>UPDKZ</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IT_HEAD</PARAMETER>
+       <TYP>ZTC8A005_HEAD_TAB_TYPE</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IT_ITEM</PARAMETER>
+       <TYP>ZTC8A005_ITEM_TAB_TYPE</TYP>
+      </RSIMP>
+     </IMPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_UPDKZ</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Таблица для индикаторов обновления</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_HEAD</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>ZTC8A005_HEAD -&gt; tab type</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_ITEM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>ZTC8A005_ITEM -&gt; tab type</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>Z_C8A_005_DEMO_UPD_SAMPLE</FUNCNAME>
+     <UPDATE_TASK>1</UPDATE_TASK>
+     <SHORT_TEXT>Update Task for Table ZTC8A005_SAMPLE</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_UPDKZ</PARAMETER>
+       <DEFAULT>&apos;M&apos;</DEFAULT>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>UPDKZ</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IT_SAMPLE</PARAMETER>
+       <TYP>ZTC8A005_SAMPLE_TAB_TYPE</TYP>
+      </RSIMP>
+     </IMPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_UPDKZ</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Таблица для индикаторов обновления</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_SAMPLE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>ZTC8A005_SAMPLE -&gt; tab type</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

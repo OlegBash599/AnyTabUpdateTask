@@ -128,3 +128,7 @@ Example for several tables
 
 
 Additional examples and descriptions are on https://olegbash.ru/anytabupdatetask
+ ____
+
+
+The blog about the utility with commens is on https://blogs.sap.com/2022/08/21/database-update-with-utility-anytab-updatetask/

@@ -4,7 +4,7 @@
 <p>Utility is for avoiding creation additional function modules and table types for stable and fast code-writing.
 
 Main functionality is in package <strong>ZC8A_005</strong>.</BR>
-Demo-report is in addtional package <strong> [ZC8A_005_DEMO](https://github.com/OlegBash599/AnyTabUpdateTask/tree/main/DEMO_package) </strong> which is attached in separate [ZIP-file](https://github.com/OlegBash599/AnyTabUpdateTask/tree/main/DEMO_package) to this repository.
+Demo-report is in addtional sub-package <strong> [ZC8A_005_DEMO](https://github.com/OlegBash599/AnyTabUpdateTask/tree/main/src/zc8a_005_demo) </strong> which is attached in separate [ZIP-file](https://github.com/OlegBash599/AnyTabUpdateTask/tree/main/src/zc8a_005_demo) to this repository.
 </p>
 
  ____
@@ -125,8 +125,26 @@ Example for several tables
 </details>
  
  ____
+ 
+ <details>  
+<base target="_blank">
+<summary>Option not to pass table name</summary>
 
+```ABAP    
+    DATA lt_sample_tab TYPE STANDARD TABLE OF ztc8a005_sample.
 
+    lt_sample_tab = VALUE #(
+        ( entity_guid = 'ANY_SIMPL_GUID_MOD' entity_param1 = 'CHAR10' entity_param2 = '0504030201' )
+        ( entity_guid = 'ANY_SIMPL_GUID2_MOD' entity_param1 = '2CHAR10' entity_param2 = '0102030405'  )
+        ( entity_guid = 'ANY_SIMPL_GUID2_DEL' entity_param1 = '2CHAR10' entity_param2 = '777909034' )
+        ).
+
+    CREATE OBJECT lo_saver_anytab.
+    lo_saver_anytab->save2db( EXPORTING it_tab_content = lt_sample_tab )->do_commit_if_any( ).
+```
+</details>
+
+ ____
 Additional examples and descriptions are on https://olegbash.ru/anytabupdatetask
  ____
 

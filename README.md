@@ -145,6 +145,10 @@ Example for several tables
 </details>
 
  ____
+for the sake of fast debugging and tracing ControlGorup is added <strong>ZC8A005_CONTROL</strong>.
+So it is possible to switch on and off ControlGroup via tcode <strong><em>SAAB</em></strong>.
+
+ ____
 Additional examples and descriptions are on https://olegbash.ru/anytabupdatetask
  ____
 

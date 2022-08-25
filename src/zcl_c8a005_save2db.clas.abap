@@ -116,6 +116,8 @@ CLASS zcl_c8a005_save2db IMPLEMENTATION.
 
     IF lv_tabname IS INITIAL.
       RETURN.
+    ELSE.
+      BREAK-POINT ID zc8a005_control.
     ENDIF.
 
     IF iv_strict EQ abap_true.

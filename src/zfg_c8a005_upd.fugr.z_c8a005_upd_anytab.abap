@@ -14,6 +14,31 @@ FUNCTION z_c8a005_upd_anytab.
   DATA lo_tab_json TYPE REF TO zcl_c8a005_tab_json.
   DATA lv_json_str TYPE string.
 
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  DATA lv_subkey_saab_log TYPE string.
+  DATA lv_ts TYPE timestampl.
+  DATA sycprog TYPE sycprog.
+  DATA syuname TYPE syuname.
+  DATA lv_bcs_mod TYPE bcs_blmodule.
+
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  GET TIME STAMP FIELD lv_ts.
+
+  lv_subkey_saab_log = iv_tabname && `_` && lv_ts.
+  sycprog = sy-cprog.
+  syuname = sy-uname.
+
+  LOG-POINT ID zc8a005_control SUBKEY lv_subkey_saab_log
+    FIELDS it_tab_data
+           iv_do_commit
+           iv_kz
+           iv_dest_none
+           iv_empty_fields
+           sycprog
+           syuname.
+  lv_bcs_mod = iv_tabname.
+  cl_bcs_breakloop=>execute_loop( iv_module = lv_bcs_mod ).
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   CREATE OBJECT lo_tab_json.
 
   lo_tab_json->get_json_string( EXPORTING it_tab_data = it_tab_data

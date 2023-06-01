@@ -161,6 +161,6 @@ In Russian you can add your comments here:
 The Old-Merry **SAPFORUM**: https://sapboard.ru/forum/viewtopic.php?f=13&t=100324
 
 
-The well-structured educational and library organization <a href="https://www.sapland.ru/" target="_blank">SAPLAND.ru</a>:
+The well-structured educational and library source <a href="https://www.sapland.ru/" target="_blank">SAPLAND.ru</a>:
 https://sappro.sapland.ru/kb/articles/stats/konsistentnoe-obnovlenie-bazi-dannih-pri-pomoschi-phunktsionala-any-tab-update-t.html
 

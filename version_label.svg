@@ -6,6 +6,6 @@
 >
   <text font-size="16" x="10" y="20">
     <tspan fill="green">Production purposes</tspan>,
-    <tspan fill="green">High load tested</tspan>
+    <tspan fill="yellow">High load tested</tspan>
   </text>
 </svg>

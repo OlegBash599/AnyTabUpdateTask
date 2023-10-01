@@ -1,7 +1,7 @@
 # AnyTabUpdateTask
 <h1>Utility for DataBase Changes in Update Task</h1>
 
-<a><img src="https://github.com/OlegBash599/AnyTabUpdateTask/blob/main/version_label.svg"/></a>
+<img src="https://github.com/OlegBash599/AnyTabUpdateTask/blob/main/version_label.svg"/>
 
 
 <p>Utility is for avoiding creation additional function modules and table types for stable and fast code-writing.

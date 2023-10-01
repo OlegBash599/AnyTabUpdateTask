@@ -5,7 +5,7 @@
      width="950" height="25"
 >
   <text font-size="24" x="10" y="20" >
-    <tspan fill="green" background-color="F9D987" >Production purposes</tspan>,
+    <tspan fill="green" background-color="Indigo" >Production purposes</tspan>,
     <tspan fill="violet">High load tested</tspan>
   </text>
 </svg>

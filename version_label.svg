@@ -4,8 +4,8 @@
      xmlns:xlink="http://www.w3.org/1999/xlink"
      width="950" height="25"
 >
-  <text font-size="24" x="10" y="20" >
-    <tspan fill="green" background-color="Indigo" >Production purposes</tspan>,
+  <text font-size="24" background-color="Indigo" x="10" y="20" >
+    <tspan fill="green" >Production purposes</tspan>,
     <tspan fill="violet">High load tested</tspan>
   </text>
 </svg>

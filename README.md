@@ -162,6 +162,9 @@ The blog about the utility with commens is on https://blogs.sap.com/2022/08/21/d
 
 In Russian you can add your comments here:
 The Old-Merry **SAPFORUM**: https://sapboard.ru/forum/viewtopic.php?f=13&t=100324
+----
+HABR-blog
+https://habr.com/ru/articles/787282/
 
 
 The well-structured educational and library source <a href="https://www.sapland.ru/" target="_blank">SAPLAND.ru</a>:

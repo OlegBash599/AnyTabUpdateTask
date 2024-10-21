@@ -24,7 +24,7 @@ ENDCLASS.
 
 CLASS ltc_event_run IMPLEMENTATION.
   METHOD run_insert_simple.
-    " moved to separate package ZC8A_005_DEMO
+    " moved to separate package ZC8A_005_DEMO-
     " include ZC8A_005_DEMO_REP_CLS10
   ENDMETHOD.
 

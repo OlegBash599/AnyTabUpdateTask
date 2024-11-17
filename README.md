@@ -176,4 +176,5 @@ https://habr.com/ru/articles/787282/
 - [ ] CheckValues
 - [ ] GTT-sampless like here(https://github.com/OlegBash599/ZC8A016/tree/main)
 - [ ] External Call to Save in External HTTP-service
+- [ ] Add Data Driven Testing Functions
 

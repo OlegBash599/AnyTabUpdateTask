@@ -1,5 +1,5 @@
 # AnyTabUpdateTask
-<h1>Utility for DataBase Changes in Update Task</h1>
+<h1>Utility for DataBase Changes in Update Task and OOP&Functional working with internal tables</h1>
 
 <img src="https://github.com/OlegBash599/AnyTabUpdateTask/blob/main/version_label.svg"/>
 

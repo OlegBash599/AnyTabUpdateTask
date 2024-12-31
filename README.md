@@ -172,6 +172,26 @@ HABR-blog
 https://habr.com/ru/articles/787282/
 
 
+## Object-Oriented grouping is added
+details are in unit test and in demo-report
+```ABAP    
+    DATA lt_fi_doc TYPE tt_fi_doc.
+
+    DATA lt_fi_doc_sum_by_kunnr TYPE tt_fi_doc.
+
+    _fill_mock( IMPORTING et_fi_doc = lt_fi_doc ).
+
+    mo_cut->set_in( it = lt_fi_doc )->group_by(
+         EXPORTING iv_f1 = 'KUNNR' ).
+
+    CLEAR lt_fi_doc_sum_by_kunnr.
+    WHILE mo_cut->has_next_grp( ) EQ abap_true.
+      mo_cut->get_next_grp( ).
+      _calc_sum_in_group( EXPORTING io_tab_group = mo_cut
+                          CHANGING ct_fi_doc_sum = lt_fi_doc_sum_by_kunnr ).
+    ENDWHILE.
+```
+
 ### TODO list
 - [ ] CheckValues
 - [ ] GTT-sampless like here(https://github.com/OlegBash599/ZC8A016/tree/main)

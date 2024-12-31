@@ -173,7 +173,7 @@ HABR-blog
 https://habr.com/ru/articles/787282/
 
 
-## Object-Oriented grouping is added
+## Object-Oriented grouping
 details are in [unit test](https://github.com/OlegBash599/AnyTabUpdateTask/blob/main/src/zcl_c8a005_group_tab.clas.testclasses.abap) and in demo-report
 ```ABAP    
     DATA lt_fi_doc TYPE tt_fi_doc.

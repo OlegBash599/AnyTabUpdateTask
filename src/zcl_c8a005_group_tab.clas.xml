@@ -3,22 +3,15 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <VSEOCLASS>
-    <CLSNAME>ZCX_C8A005_ERROR</CLSNAME>
+    <CLSNAME>ZCL_C8A005_GROUP_TAB</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>AnyTab UpdateTask Exception</DESCRIPT>
-    <CATEGORY>40</CATEGORY>
+    <DESCRIPT>Iterator - Grouping Tab</DESCRIPT>
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>
     <UNICODE>X</UNICODE>
+    <WITH_UNIT_TESTS>X</WITH_UNIT_TESTS>
    </VSEOCLASS>
-   <DESCRIPTIONS>
-    <SEOCOMPOTX>
-     <CMPNAME>CONSTRUCTOR</CMPNAME>
-     <LANGU>R</LANGU>
-     <DESCRIPT>CONSTRUCTOR</DESCRIPT>
-    </SEOCOMPOTX>
-   </DESCRIPTIONS>
   </asx:values>
  </asx:abap>
 </abapGit>

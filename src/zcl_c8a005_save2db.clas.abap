@@ -131,7 +131,7 @@ CLASS zcl_c8a005_save2db IMPLEMENTATION.
 
     CALL FUNCTION 'Z_C8A005_UPD_ANYTAB'
       EXPORTING
-        iv_tabname      = lv_tabname      
+        iv_tabname      = lv_tabname
         it_tab_data     = it_tab_content
         iv_do_commit    = iv_do_commit
         iv_kz           = iv_kz
@@ -166,7 +166,7 @@ CLASS zcl_c8a005_save2db IMPLEMENTATION.
       APPEND is_tab_content TO <fs_tab>.
       CALL FUNCTION 'Z_C8A005_UPD_ANYTAB'
         EXPORTING
-          iv_tabname   = iv_tabname          
+          iv_tabname   = iv_tabname
           it_tab_data  = <fs_tab>
           iv_do_commit = iv_do_commit
           iv_dest_none = iv_dest_none.

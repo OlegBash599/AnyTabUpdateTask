@@ -198,4 +198,4 @@ details are in [unit test](https://github.com/OlegBash599/AnyTabUpdateTask/blob/
 - [ ] GTT-sampless like here(https://github.com/OlegBash599/ZC8A016/tree/main)
 - [ ] External Call to Save in External HTTP-service
 - [ ] Add Data Driven Testing Functions
-
+- [ ] Add Starting New Task by sel options update
